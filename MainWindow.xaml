@@ -1,0 +1,48 @@
+﻿<Window x:Class="FarmersMarketAdmin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FarmersMarketAdmin"
+        mc:Ignorable="d"
+        Title="Inventory" Height="464" Width="464">
+    <Grid Margin="0,0,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Row for Search Input -->
+            <RowDefinition Height="*"/>
+            <!-- Row for ListView -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row for Delete Button -->
+        </Grid.RowDefinitions>
+
+        <!-- Search Input -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="txtSearch" Width="200" TextChanged="txtSearch_TextChanged"/>
+            <Button Content="Search" Click="btnSearch_Click" Margin="10,0,0,0"/>
+
+        </StackPanel>
+
+        <!-- ListView to display the data with GridView -->
+        <ListView Grid.Row="1" x:Name="listView" Margin="10">
+            <ListView.View>
+                <!-- GridView to define the columns -->
+                <GridView>
+                    <GridViewColumn Header="Product Name" DisplayMemberBinding="{Binding ProductName}" />
+                    <GridViewColumn Header="Product ID" DisplayMemberBinding="{Binding ProductID}" />
+                    <GridViewColumn Header="Amount (kg)" DisplayMemberBinding="{Binding AmountKg}" />
+                    <GridViewColumn Header="Price (CAD)/kg" DisplayMemberBinding="{Binding PricePerKg}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Delete button to delete the selected product -->
+
+        <Button Grid.Row="2" Content="Delete Item" Click="DeleteButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-100,10,0,10" />
+        <Button Grid.Row="2" Content="Add Item" Click="AddButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100,10,0,10" />
+        <Button Grid.Row="2" Content="Update Item" Click="UpdateButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-300,10,0,10" />
+        <Button Grid.Row="2" Content="Buy Items" Click="BuyButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="300,10,0,10" />
+        <Button Content="Refresh Inventory" Click="RefreshButton_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Width="105" Margin="322,0,0,0" />
+    </Grid>
+</Window>
